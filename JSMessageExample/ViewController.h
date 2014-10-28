@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 KEHN. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <WKScriptMessageHandler>
 
 
 @end
