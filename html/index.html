@@ -39,6 +39,9 @@
             setTimeout(call_native, 1000);
 
             selection.on("change", call_native);
+
+            // Expose that function globally
+            window.call_native = call_native;
         });
     </script>
 </head>
