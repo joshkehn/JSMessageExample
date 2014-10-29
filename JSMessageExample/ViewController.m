@@ -47,17 +47,18 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-//     Nothing else happens here
+    // Nothing else happens here
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
 
-    // Log out the message received
+    // Check to make sure the name is correct
     if ([message.name isEqualToString:@"observe"]) {
+        // Log out the message received
         NSLog(@"Received event %@", message.body);
 
-        // Then pull something interesting from the device using the message body
+        // Then pull something from the device using the message body
         NSString *version = [[UIDevice currentDevice] valueForKey:message.body];
 
         // Execute some JavaScript using the result

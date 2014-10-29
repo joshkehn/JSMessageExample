@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>JSMessageExample by Joshua Kehn</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 95%;
+            margin: 50px auto;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        select {
+            width: 100%;
+            display: block;
+            margin-top: 2em;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var headline = $("#headline");
+            var selection = $("#selector");
+            function set_headline (text) {
+                headline.text(text);
+            }
+
+            function call_native () {
+                var prop = selection.val();
+               set_headline("asked for " + prop + "..."); window.webkit.messageHandlers.observe.postMessage(prop);
+            }
+
+            setTimeout(call_native, 1000);
+
+            selection.on("change", call_native);
+        });
+    </script>
+</head>
+<body>
+    <h2 id="headline">loading...</h2>
+    <select id="selector">
+        <option value="systemVersion" selected>iOS Version</option>
+        <option value="systemName">System Name</option>
+        <option value="name">Device Name</option>
+        <option value="model">Device Model</option>
+        <option value="userInterfaceIdiom">User Interface</option>
+        <option value="identifierForVendor">Vendor ID</option>
+    </select>
+    <p>Enjoying the demo? <a href="http://joshuakehn.com/">Read more here</a></p>
+</body>
+</html>
